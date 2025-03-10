@@ -47,8 +47,16 @@ const renderCalendar = () => {
     }
   });
   document.querySelector(".dates").innerHTML = dates.join("");
+  addModalEventListeners();
 };
-
+const addModalEventListeners = () => {
+  document.querySelectorAll(".openModal").forEach((dateElement) => {
+    dateElement.addEventListener("click", () => {
+      const selectedDate = dateElement.dataset.date;
+      console.log("선택한 날짜:", selectedDate);
+    });
+  });
+};
 renderCalendar();
 
 const prevMonth = () => {
