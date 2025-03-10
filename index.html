@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todoList</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      투두리스트
+      <div class="calendar">
+        <div class="header">
+          <button id="prev" onClick="prevMonth()">이전</button>
+          <button class="today" onClick="goCurrentMonth()"></button>
+          <button id="next" onClick="nextMonth()">다음</button>
+        </div>
+        <div class="main">
+          <div class="days">
+            <div class="day">일</div>
+            <div class="day">월</div>
+            <div class="day">화</div>
+            <div class="day">수</div>
+            <div class="day">목</div>
+            <div class="day">금</div>
+            <div class="day">토</div>
+          </div>
+          <div class="dates"></div>
+        </div>
+      </div>
+      <button id="add">추가</button>
+      <script src="calendar.js"></script>
+      <script src="script.js"></script>
+    </div>
+  </body>
+</html>
