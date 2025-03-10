@@ -37,16 +37,15 @@ const renderCalendar = () => {
       eachDate === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      dates[
-        i
-      ] = `<div class="date"><span class="todate">${eachDate}</span></div>`;
+      dates[i] = `<div class="date openModal" data-date="${currentYear}/${
+        currentMonth + 1
+      }/${eachDate}"><span class="todate">${eachDate}</span></div>`;
     } else {
-      dates[
-        i
-      ] = `<div class="date"><span class="${condition}">${eachDate}</span></div>`;
+      dates[i] = `<div class="date openModal" data-date="${currentYear}/${
+        currentMonth + 1
+      }/${eachDate}"><span class="${condition}">${eachDate}</span></div>`;
     }
   });
-
   document.querySelector(".dates").innerHTML = dates.join("");
 };
 
