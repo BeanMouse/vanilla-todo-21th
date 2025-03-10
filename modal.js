@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
           }
           addData(selectedDate, newTodo, todoData);
-          updateTodo(selectedDate, todos);
+          updateTodo(selectedDate, todoData[selectedDate] || []);
         });
       };
       updateTodo(selectedDate, todos);
