@@ -13,6 +13,9 @@
   font-weight: 400;
   box-sizing: border-box;
 }
+.body {
+  color: #000;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -23,9 +26,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 10px;
 }
 .calendar {
-  width: 600px;
+  max-width: 600px;
+  width: 80%;
   margin: 50px;
 }
 .main {
@@ -68,4 +73,33 @@
 }
 .other:hover {
   cursor: not-allowed;
+}
+
+.nav {
+  font-size: 15px;
+  background: transparent;
+  border-radius: 20px;
+  border: 1px solid #000;
+  color: #000;
+  padding: 5px 10px;
+  box-shadow: none;
+}
+.nav:hover {
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+#today {
+  color: #000;
+  border: none;
+  font-size: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+.todate {
+  background: rgb(255, 41, 41);
+  color: white;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
 }

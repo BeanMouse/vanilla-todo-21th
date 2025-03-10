@@ -3,7 +3,7 @@ const renderCalendar = () => {
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
 
-  document.querySelector(".today").textContent = `${currentYear}년 ${
+  document.querySelector("#today").textContent = `${currentYear}년 ${
     currentMonth + 1
   }월`;
 
@@ -11,9 +11,7 @@ const renderCalendar = () => {
   const currentLast = new Date(currentYear, currentMonth + 1, 0);
 
   const prevLastDay = prevLast.getDay();
-  const prevLastDate = prevLast.getDate();
   const currentLastDay = currentLast.getDay();
-  const currentLastDate = currentLast.getDate();
 
   const prevDates = [];
   const currentDates = [...Array(currentLast.getDate() + 1).keys()].slice(1);
@@ -30,14 +28,23 @@ const renderCalendar = () => {
   }
 
   const dates = prevDates.concat(currentDates, nextDates);
-  dates.forEach((date, i) => {
+  dates.forEach((eachDate, i) => {
     const firstDate = prevDates.length;
     const lastDateIndex = prevDates.length + currentDates.length - 1;
     const condition =
       i >= firstDate && i < lastDateIndex + 1 ? `current` : `other`;
-    dates[
-      i
-    ] = `<div class="date"><span class="${condition}">${date}</span></div>`;
+    if (
+      eachDate === new Date().getDate() &&
+      date.getMonth() === new Date().getMonth()
+    ) {
+      dates[
+        i
+      ] = `<div class="date"><span class="todate">${eachDate}</span></div>`;
+    } else {
+      dates[
+        i
+      ] = `<div class="date"><span class="${condition}">${eachDate}</span></div>`;
+    }
   });
 
   document.querySelector(".dates").innerHTML = dates.join("");
