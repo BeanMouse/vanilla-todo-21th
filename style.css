@@ -95,7 +95,7 @@ input:checked + label {
   color: #fff;
   cursor: pointer;
 }
-#currentYearMonth {
+.currentYearMonth {
   color: #000;
   border: none;
   font-size: 20px;

@@ -6,7 +6,7 @@ export const renderCalendar = () => {
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
 
-  document.querySelector("#currentYearMonth").textContent = `${currentYear}년 ${
+  document.querySelector(".currentYearMonth").textContent = `${currentYear}년 ${
     currentMonth + 1
   }월`;
 
@@ -76,7 +76,10 @@ const nextMonth = () => {
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
 };
-const goCurrentMonth = () => {
+const goCurrentYearMonth = () => {
   date.setMonth(new Date().getMonth());
   renderCalendar();
 };
+window.prevMonth = prevMonth;
+window.nextMonth = nextMonth;
+window.goCurrentYearMonth = goCurrentYearMonth;

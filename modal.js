@@ -9,11 +9,16 @@ export const renderModal = (selectedDate) => {
   modalOverlay.classList.add("modal-overlay");
 
   const updateTodo = (selectedDate, todos) => {
+    const clikedDate = new Date(selectedDate);
+    const viewDate =
+      clikedDate.getDate() === new Date().getDate() &&
+      clikedDate.getMonth() === new Date().getMonth()
+        ? "오늘"
+        : `${clikedDate.getDate()}일`;
     modalOverlay.innerHTML = `
       <div class="modal">
         <div class="modal-header">
-          <h2>${selectedDate}의 투두리스트</h2>
-        </div> 
+          <h2>${viewDate}의 할 일</h2>
         <div class="modal-body">
           <ul id="todoList">
             ${todos
