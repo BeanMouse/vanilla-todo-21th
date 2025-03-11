@@ -50,9 +50,12 @@ export const renderCalendar = () => {
         year = currentYear + 1;
       }
     }
-    const selectedDate = `${year}/${month + 1}/${eachDate}`;
+    const selectedDate = `${year}/${month}/${eachDate}`;
     const isTodo = todoData[selectedDate] && todoData[selectedDate].length > 0;
-    const todo = isTodo ? `<p class="todo">할일 있음</p>` : "";
+    const isTodoClass = isTodo ? "isTodo" : "";
+    const todo = isTodo
+      ? `<p class="todo">할일 ${todoData[selectedDate].length}개 !</p>`
+      : "";
     const condition =
       i >= firstDate && i < lastDateIndex + 1 ? `current` : `other`;
     if (
@@ -61,11 +64,11 @@ export const renderCalendar = () => {
     ) {
       dates[
         i
-      ] = `<div class="date openModalClass" data-date="${selectedDate}"><span class="today">오늘</span>${todo}</div>`;
+      ] = `<div class="date openModalClass " data-date="${selectedDate}"><span class="today ${isTodoClass}" >오늘</span>${todo}</div>`;
     } else {
       dates[
         i
-      ] = `<div class="date openModalClass" data-date="${selectedDate}"><span class="${condition}">${eachDate}일</span>${todo}</div>`;
+      ] = `<div class="date openModalClass " data-date="${selectedDate}"><span class="${condition} ${isTodoClass}">${eachDate}일</span>${todo}</div>`;
     }
   });
   document.querySelector(".dates").innerHTML = dates.join("");
