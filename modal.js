@@ -3,6 +3,10 @@ import { loadData, addData, deleteData } from "./storage.js";
 
 export const renderModal = (selectedDate) => {
   const modalRoot = document.querySelector("#modal-root");
+  const existingModal = modalRoot.querySelector(".modal-overlay");
+  if (existingModal) {
+    modalRoot.removeChild(existingModal);
+  }
   const todoData = loadData();
   const todos = todoData[selectedDate] || [];
   const modalOverlay = document.createElement("div");

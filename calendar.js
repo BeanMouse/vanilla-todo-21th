@@ -48,17 +48,17 @@ export const renderCalendar = () => {
     ) {
       dates[
         i
-      ] = `<div class="date openModal" data-date="${selectedDate}"><span class="today">오늘</span>${todo}</div>`;
+      ] = `<div class="date openModalClass" data-date="${selectedDate}"><span class="today">오늘</span>${todo}</div>`;
     } else {
       dates[
         i
-      ] = `<div class="date openModal" data-date="${selectedDate}"><span class="${condition}">${eachDate}일</span>${todo}</div>`;
+      ] = `<div class="date openModalClass" data-date="${selectedDate}"><span class="${condition}">${eachDate}일</span>${todo}</div>`;
     }
   });
   document.querySelector(".dates").innerHTML = dates.join("");
 
   document.querySelector(".dates").addEventListener("click", (e) => {
-    const openModalEl = e.target.closest(".openModal");
+    const openModalEl = e.target.closest(".openModalClass");
     if (openModalEl) {
       const selectedDate = openModalEl.dataset.date;
       renderModal(selectedDate);
