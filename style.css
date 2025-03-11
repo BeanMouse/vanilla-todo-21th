@@ -34,6 +34,10 @@ ul {
 p {
   color: #000;
 }
+input + label {
+  cursor: pointer;
+  width: 75%;
+}
 input:checked + label {
   text-decoration: line-through;
 }
