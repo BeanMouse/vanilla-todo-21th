@@ -18,7 +18,7 @@ export const renderModal = (selectedDate) => {
       clikedDate.getDate() === new Date().getDate() &&
       clikedDate.getMonth() === new Date().getMonth()
         ? "오늘"
-        : `${clikedDate.getDate()}일`;
+        : `${clikedDate.getMonth()}월 ${clikedDate.getDate()}일`;
     modalOverlay.innerHTML = `
       <div class="modal">
         <div class="modal-header">

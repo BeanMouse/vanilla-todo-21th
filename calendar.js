@@ -37,7 +37,20 @@ export const renderCalendar = () => {
   dates.forEach((eachDate, i) => {
     const firstDate = prevDates.length;
     const lastDateIndex = prevDates.length + currentDates.length - 1;
-    const selectedDate = `${currentYear}/${currentMonth + 1}/${eachDate}`;
+    let year = currentYear;
+    let month = currentMonth + 1;
+    if (i < firstDate) {
+      month = currentMonth === 0 ? 12 : currentMonth;
+      if (currentMonth === 0) {
+        year = currentYear - 1;
+      }
+    } else if (i > lastDateIndex) {
+      month = currentMonth === 11 ? 1 : currentMonth + 2;
+      if (currentMonth === 11) {
+        year = currentYear + 1;
+      }
+    }
+    const selectedDate = `${year}/${month + 1}/${eachDate}`;
     const isTodo = todoData[selectedDate] && todoData[selectedDate].length > 0;
     const todo = isTodo ? `<p class="todo">할일 있음</p>` : "";
     const condition =
