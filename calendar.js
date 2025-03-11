@@ -3,7 +3,7 @@ const renderCalendar = () => {
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
 
-  document.querySelector("#today").textContent = `${currentYear}년 ${
+  document.querySelector("#currentYearMonth").textContent = `${currentYear}년 ${
     currentMonth + 1
   }월`;
 
@@ -14,7 +14,10 @@ const renderCalendar = () => {
   const currentLastDay = currentLast.getDay();
 
   const prevDates = [];
-  const currentDates = [...Array(currentLast.getDate() + 1).keys()].slice(1);
+  const currentDates = Array.from(
+    { length: currentLast.getDate() },
+    (_, i) => i + 1
+  );
   const nextDates = [];
 
   if (prevLastDay !== 6) {
@@ -39,24 +42,16 @@ const renderCalendar = () => {
     ) {
       dates[i] = `<div class="date openModal" data-date="${currentYear}/${
         currentMonth + 1
-      }/${eachDate}"><span class="todate">${eachDate}</span></div>`;
+      }/${eachDate}"><span class="today">오늘</span></div>`;
     } else {
       dates[i] = `<div class="date openModal" data-date="${currentYear}/${
         currentMonth + 1
-      }/${eachDate}"><span class="${condition}">${eachDate}</span></div>`;
+      }/${eachDate}"><span class="${condition}">${eachDate}일</span></div>`;
     }
   });
   document.querySelector(".dates").innerHTML = dates.join("");
-  addModalEventListeners();
 };
-const addModalEventListeners = () => {
-  document.querySelectorAll(".openModal").forEach((dateElement) => {
-    dateElement.addEventListener("click", () => {
-      const selectedDate = dateElement.dataset.date;
-      console.log("선택한 날짜:", selectedDate);
-    });
-  });
-};
+
 renderCalendar();
 
 const prevMonth = () => {

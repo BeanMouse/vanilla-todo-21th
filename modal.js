@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalOverlay.innerHTML = `
             <div class="modal">
                 <div class="modal-header">
-                    <h2>${openModal.textContent}일의 투두리스트</h2>
+                    <h2>${openModal.textContent}의 투두리스트</h2>
                 </div> 
                 <div class="modal-body">
                     <ul id="todoList">
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             (
                               todoItem,
                               index
-                            ) => `<li>${todoItem} <button class="deleteTodo
+                            ) => `<li><input type="checkbox" id="todoChk"><label for="todoChk">${todoItem}<label></input><button class="deleteTodo
                         " data-index="${index}">삭제</button></li>`
                           )
                           .join("")}
@@ -32,12 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
           `;
+        modalOverlay
+          .querySelector("#todoInput")
+          .addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              modalOverlay.querySelector(".addTodo").click();
+            }
+          });
         modalOverlay.querySelectorAll(".deleteTodo").forEach((deleteTodo) => {
           deleteTodo.addEventListener("click", (e) => {
             deleteData(selectedDate, e.target.dataset.index, todoData);
             updateTodo(selectedDate, todos);
           });
         });
+
         modalOverlay.querySelector(".addTodo").addEventListener("click", () => {
           const todoInput = modalOverlay.querySelector("#todoInput");
           const newTodo = todoInput.value;

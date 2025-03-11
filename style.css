@@ -13,9 +13,14 @@
   font-weight: 400;
   box-sizing: border-box;
 }
-.body {
-  color: #000;
+ul {
+  list-style: none;
+  padding: 0px;
 }
+input:checked + label {
+  text-decoration: line-through;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -89,14 +94,14 @@
   color: #fff;
   cursor: pointer;
 }
-#today {
+#currentYearMonth {
   color: #000;
   border: none;
   font-size: 20px;
   background: transparent;
   cursor: pointer;
 }
-.todate {
+.today {
   background: rgb(255, 41, 41);
   color: white;
   padding: 5px;
@@ -121,4 +126,9 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.deleteTodo {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  margin-left: 10px;
 }
