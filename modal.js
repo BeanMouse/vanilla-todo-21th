@@ -1,3 +1,4 @@
+import { renderCalendar } from "./calendar.js";
 import { loadData, addData, deleteData } from "./storage.js";
 document.addEventListener("DOMContentLoaded", () => {
   const modalRoot = document.querySelector("#modal-root");
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
           deleteTodo.addEventListener("click", (e) => {
             deleteData(selectedDate, e.target.dataset.index, todoData);
             updateTodo(selectedDate, todos);
+            renderCalendar();
           });
         });
 
@@ -55,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           addData(selectedDate, newTodo, todoData);
           updateTodo(selectedDate, todoData[selectedDate] || []);
+          renderCalendar();
         });
       };
       updateTodo(selectedDate, todos);

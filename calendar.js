@@ -1,5 +1,7 @@
+import { loadData } from "./storage.js";
 const date = new Date();
-const renderCalendar = () => {
+export const renderCalendar = () => {
+  const todoData = loadData();
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
 
@@ -34,19 +36,22 @@ const renderCalendar = () => {
   dates.forEach((eachDate, i) => {
     const firstDate = prevDates.length;
     const lastDateIndex = prevDates.length + currentDates.length - 1;
+    const selectedDate = `${currentYear}/${currentMonth + 1}/${eachDate}`;
+    const isTodo = todoData[selectedDate] && todoData[selectedDate].length > 0;
+    const todo = isTodo ? `<p class="todo">할일 있음</p>` : "";
     const condition =
       i >= firstDate && i < lastDateIndex + 1 ? `current` : `other`;
     if (
       eachDate === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      dates[i] = `<div class="date openModal" data-date="${currentYear}/${
-        currentMonth + 1
-      }/${eachDate}"><span class="today">오늘</span></div>`;
+      dates[
+        i
+      ] = `<div class="date openModal" data-date="${selectedDate}"><span class="today">오늘</span>${todo}</div>`;
     } else {
-      dates[i] = `<div class="date openModal" data-date="${currentYear}/${
-        currentMonth + 1
-      }/${eachDate}"><span class="${condition}">${eachDate}일</span></div>`;
+      dates[
+        i
+      ] = `<div class="date openModal" data-date="${selectedDate}"><span class="${condition}">${eachDate}일</span>${todo}</div>`;
     }
   });
   document.querySelector(".dates").innerHTML = dates.join("");
