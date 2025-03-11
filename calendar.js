@@ -1,4 +1,5 @@
 import { loadData } from "./storage.js";
+import { renderModal } from "./modal.js";
 const date = new Date();
 export const renderCalendar = () => {
   const todoData = loadData();
@@ -55,6 +56,14 @@ export const renderCalendar = () => {
     }
   });
   document.querySelector(".dates").innerHTML = dates.join("");
+
+  document.querySelector(".dates").addEventListener("click", (e) => {
+    const openModalEl = e.target.closest(".openModal");
+    if (openModalEl) {
+      const selectedDate = openModalEl.dataset.date;
+      renderModal(selectedDate);
+    }
+  });
 };
 
 renderCalendar();
