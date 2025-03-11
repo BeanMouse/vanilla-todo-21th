@@ -8,6 +8,20 @@
   src: url(/asset/fonts/Cafe24Supermagic-Bold-v1.0.otf) format("opentype");
   font-weight: 700;
 }
+@font-face {
+  font-family: "DungGeunMo";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.main-title {
+  font-family: "DungGeunMo", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #000;
+  margin: 10px;
+}
 * {
   font-family: "Cafe24Supermagic", sans-serif;
   font-weight: 400;
@@ -40,6 +54,7 @@ input:checked + label {
   max-width: 600px;
   width: 80%;
   margin: 50px;
+  margin-top: 0px;
 }
 .main {
   width: 100%;
@@ -131,6 +146,9 @@ input:checked + label {
   padding: 30px;
   border-radius: 10px;
   width: 400px;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .deleteTodo {
@@ -172,4 +190,12 @@ input:checked + label {
   width: 25%;
   height: 25px;
   margin-left: 5px;
+  color: #000;
+}
+span {
+  font-size: 17px;
+  @media (max-width: 768px) {
+    font-size: 13px;
+    white-space: nowrap;
+  }
 }
