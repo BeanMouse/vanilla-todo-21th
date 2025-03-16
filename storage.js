@@ -5,8 +5,9 @@ export const saveData = (todoData) => {
 };
 //데이터 로드
 export const loadData = () => {
-  if (localStorage.getItem(StorageKey)) {
-    return JSON.parse(localStorage.getItem(StorageKey));
+  const localStorageData = localStorage.getItem(StorageKey);
+  if (localStorageData) {
+    return JSON.parse(localStorageData);
   }
   return {};
 };

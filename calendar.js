@@ -1,6 +1,6 @@
 import { loadData } from "./storage.js";
 import { renderModal } from "./modal.js";
-//오늘 날짜
+//캘린더에서 사용할 데이터 날짜
 const date = new Date();
 //캘린더 렌더링 함수
 export const renderCalendar = () => {
@@ -42,7 +42,7 @@ export const renderCalendar = () => {
   }
 
   const dates = prevDates.concat(currentDates, nextDates);
-  dates.forEach((eachDate, i) => {
+  const dateHTML = dates.forEach((eachDate, i) => {
     const firstDate = prevDates.length;
     const lastDateIndex = prevDates.length + currentDates.length - 1;
     let year = currentYear;
@@ -86,15 +86,14 @@ export const renderCalendar = () => {
   document.querySelector(".dates").innerHTML = dates.join("");
 
   //버블링을 사용하여 이벤트 위임
-  document.querySelector(".dates").addEventListener("click", (e) => {
-    const openModalEl = e.target.closest(".openModalClass");
-    if (openModalEl) {
-      const selectedDate = openModalEl.dataset.date;
-      renderModal(selectedDate);
-    }
-  });
 };
-
+document.querySelector(".dates").addEventListener("click", (e) => {
+  const openModalEl = e.target.closest(".openModalClass");
+  if (openModalEl) {
+    const selectedDate = openModalEl.dataset.date;
+    renderModal(selectedDate);
+  }
+});
 renderCalendar();
 
 //캘린더 달 이동 네브 함수
